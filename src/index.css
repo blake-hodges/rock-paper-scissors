@@ -1,1 +1,51 @@
+/* global styles */
 
+.appWrapper {
+    background-color: #f099a8;
+    background-image: linear-gradient(315deg, #f099a8 0%, #f7dce1 74%);
+    height: 100vh;
+}
+
+
+/* Header component styles */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Main component styles */
+
+.main {
+    display: grid;
+    grid-template-columns: 3fr 1fr 3fr;
+}
+
+
+.gameCard {
+    border: 1px solid black;
+    height: 300px;
+    margin: 20px;
+    background-color: white;
+}
+
+.gameCard h3 {
+    text-align: center;
+}
+
+.gameCard p{
+    text-align: center;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+}
+
+.gameMessage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

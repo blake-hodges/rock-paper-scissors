@@ -1,9 +1,11 @@
-import './App.css';
+import Header from './components/Header';
+import Main from './components/Main';
 
 function App() {
     return (
-    <div>
-        <p>Rock, paper, scissors</p>
+    <div className="appWrapper">
+        <Header />
+        <Main />
     </div>
     );
 }
