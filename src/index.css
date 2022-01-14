@@ -38,9 +38,18 @@
     text-align: center;
 }
 
+.yourChoice, .computerChoice {
+    text-transform: capitalize;
+}
+
 .icons {
     display: flex;
     justify-content: center;
+}
+
+.activeIcon {
+    background-color: #EFEFEF;
+    border-radius: 90px;
 }
 
 .gameMessage {
