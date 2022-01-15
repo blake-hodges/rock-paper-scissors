@@ -5,10 +5,11 @@ import Main from './components/Main';
 
 
 function App() {
+    const [gameRound, setGameRound] = useState(0);
     return (
     <div className="appWrapper">
-        <Header />
-        <Main />
+        <Header gameRound={gameRound} />
+        <Main gameRound={gameRound} setGameRound={setGameRound} />
     </div>
     );
 }

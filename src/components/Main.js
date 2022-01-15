@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import paper from '../assets/paper.png';
 import rock from '../assets/rock.png';
 import scissors from '../assets/scissors.png';
+import computer from '../assets/computer.png';
 
-function Main() {
+function Main(props) {
     const [playerChoice, setPlayerChoice] = useState("rock");
     const [computerChoice, setComputerChoice] = useState("");
-    const [computerIcon, setComputerIcon] = useState(rock);
+    const [computerIcon, setComputerIcon] = useState("");
     const [gameMessage, setGameMessage] = useState("Ready to play?");
     const [activeIcon, setActiveIcon] = useState("")
     const [playerScore, setPlayerScore] = useState(0);
@@ -19,9 +20,11 @@ function Main() {
         setActiveIcon("");
         setPlayerScore(0);
         setComputerScore(0);
+        props.setGameRound(0);
     }
 
-    const playGame = () => {
+    const playGame = (playerChoice) => {
+        props.setGameRound(props.gameRound + 1);
         let choices = ["rock", "paper", "scissors"];
         let computerChoice = choices[Math.floor((Math.random() * 3))];
         if (computerChoice === "rock") {
@@ -32,6 +35,8 @@ function Main() {
             setComputerIcon(scissors)
         }
         setComputerChoice(computerChoice);
+        setPlayerChoice(playerChoice);
+        setActiveIcon(playerChoice);
         determineWinner(playerChoice, computerChoice)
 
     }
@@ -60,7 +65,7 @@ function Main() {
         }
         if (player === "scissors" && computer === "paper") {
             setGameMessage("You won!")
-            setComputerScore(playerScore => playerScore + 1);
+            setPlayerScore(playerScore => playerScore + 1);
         }
         if (player === "scissors" && computer === "scissors") {
             setGameMessage("It's a tie!")
@@ -79,46 +84,34 @@ function Main() {
                 <div className="icons">
                     <img
                         src={rock}
-                        className={(activeIcon === "rock") ? 'activeIcon' : ''}
+                        className={(activeIcon === "rock") ? 'activeIcon' : 'playerIcons'}
                         alt="rock icon"
-                        onClick={() => {
-                            setPlayerChoice("rock");
-                            playGame();
-                            setActiveIcon("rock");
-                        }}
+                        onClick={() => playGame("rock")}
                     />
                     <img
                         src={paper}
-                        className={(activeIcon === "paper") ? 'activeIcon' : ''}
+                        className={(activeIcon === "paper") ? 'activeIcon' : 'playerIcons'}
                         alt="paper icon"
-                        onClick={() => {
-                            setPlayerChoice("paper")
-                            playGame();
-                            setActiveIcon("paper");
-                        }}
+                        onClick={() => playGame("paper")}
                     />
                     <img
                         src={scissors}
-                        className={(activeIcon === "scissors") ? 'activeIcon' : ''}
+                        className={(activeIcon === "scissors") ? 'activeIcon' : 'playerIcons'}
                         alt="scissors icon"
-                        onClick={() => {
-                            setPlayerChoice("scissors")
-                            playGame();
-                            setActiveIcon("scissors");
-                        }}
+                        onClick={() => playGame("scissors")}
                     />
                 </div>
                 <p className="yourChoice">Your choice: {playerChoice}</p>
             </div>
-            <div className="gameMessage">
-                <p>{gameMessage}</p>
+            <div className="gameMessageWrapper">
+                <p className="gameMessage">{gameMessage}</p>
                 <button className="resetButton" onClick={() => resetGame()}>Reset</button>
             </div>
             <div className="gameCard">
                 <h3>Computer</h3>
                 <p>score: {computerScore}</p>
                 <div className="icons">
-                    <img src={computerIcon} alt="rock icon" />
+                    <img className="computerIcon" src={computerChoice !== "" ? computerIcon : computer} alt="rock icon" />
                 </div>
                 <p className="computerChoice">Computer choice: {computerChoice}</p>
             </div>
