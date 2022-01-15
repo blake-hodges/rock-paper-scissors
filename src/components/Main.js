@@ -42,11 +42,11 @@ function Main(props) {
     }
     const determineWinner = (player, computer) => {
         if (player === "rock" && computer === "paper") {
-            setGameMessage("You lost!")
+            setGameMessage("You lost this round!")
             setComputerScore(computerScore => computerScore + 1);
         }
         if (player === "rock" && computer === "scissors") {
-            setGameMessage("You won!")
+            setGameMessage("You won this round!")
             setPlayerScore(playerScore => playerScore + 1);
         }
         if (player === "rock" && computer === "rock") {
@@ -56,22 +56,22 @@ function Main(props) {
             setGameMessage("It's a tie!")
         }
         if (player === "paper" && computer === "scissors") {
-            setGameMessage("You lost!")
+            setGameMessage("You lost this round!")
             setComputerScore(computerScore => computerScore + 1);
         }
         if (player === "paper" && computer === "rock") {
-            setGameMessage("You won!")
+            setGameMessage("You won this round!")
             setPlayerScore(playerScore => playerScore + 1);
         }
         if (player === "scissors" && computer === "paper") {
-            setGameMessage("You won!")
+            setGameMessage("You won this round!")
             setPlayerScore(playerScore => playerScore + 1);
         }
         if (player === "scissors" && computer === "scissors") {
             setGameMessage("It's a tie!")
         }
         if (player === "scissors" && computer === "rock") {
-            setGameMessage("You lost!")
+            setGameMessage("You lost this round!")
             setComputerScore(computerScore => computerScore + 1);
         }
 
